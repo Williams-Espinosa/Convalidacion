@@ -1,0 +1,104 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Paquetes ---
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+% --- Configuración de Formato ---
+\usepackage{setspace}
+\onehalfspacing % Interlineado de 1.5
+
+\usepackage{titlesec}
+% Títulos de secciones a 16 puntos
+\titleformat{\section}{\normalfont\fontsize{16}{19}\bfseries}{\thesection}{1em}{}
+% Subsecciones a 14 puntos (opcional para jerarquía)
+\titleformat{\subsection}{\normalfont\fontsize{14}{17}\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+% --- Hoja de Presentación ---
+\begin{titlepage}
+    \centering
+    {\bfseries\fontsize{20}{24}\selectfont NOMBRE DE LA ESCUELA \par}
+    \vspace{2cm}
+    {\bfseries\fontsize{16}{19}\selectfont Actividad: Convalidación \par}
+    \vspace{2.5cm}
+    {\large \textbf{Nombre del Alumno:} \\ Tu Nombre Completo \par}
+    \vspace{0.5cm}
+    {\large \textbf{Matrícula:} \\ 12345678 \par}
+    \vspace{0.5cm}
+    {\large \textbf{Cuatrimestre y Grupo:} \\ 4° - Grupo "A" \par}
+    \vspace{2.5cm}
+    {\large \textbf{Docente:} \\ Nombre del Profesor \par}
+    \vfill
+    {\large Jueves, 29 de enero de 2026 \par}
+\end{titlepage}
+
+% --- Índice ---
+\newpage
+\tableofcontents
+\newpage
+
+% --- Contenido ---
+\section{Introducción}
+Este proyecto analiza el comportamiento del consumo de memoria RAM en un servidor que aloja una página web, considerando una carga constante de 50 usuarios y fluctuaciones debidas a horas pico.
+
+\section{Modelado de la Ecuación}
+Para modelar el consumo de RAM ($R$) en Gigabytes (GB) respecto al tiempo ($t$) en horas, definimos la siguiente función:
+\begin{itemize}
+    \item \textbf{Carga base:} $2$ GB (Sistema operativo y servicios base).
+    \item \textbf{Consumo por usuario:} $50 \text{ usuarios} \times 0.1 \text{ GB/u} = 5$ GB.
+    \item \textbf{Variación por hora pico:} Una función seno para simular el ciclo de carga.
+\end{itemize}
+
+La ecuación resultante es:
+\[ R(t) = 7 + 3\sin\left(\frac{\pi t}{12}\right) \]
+Donde $t \in [0, 24]$ representa las horas del día.
+
+\section{Visualización del Consumo}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    title={Consumo de RAM en 24 Horas},
+    xlabel={Hora ($t$)},
+    ylabel={RAM (GB)},
+    xmin=0, xmax=24,
+    ymin=0, ymax=12,
+    xtick={0,4,8,12,16,20,24},
+    grid=both,
+    width=11cm,
+    height=7cm
+]
+\addplot [domain=0:24, samples=100, color=red, thick] {7 + 3*sin(deg(pi*x/12))};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\section{Resolución de la Integral}
+Calcularemos el \textbf{consumo total acumulado} durante las primeras 12 horas mediante la integral definida:
+
+\[ \int_{0}^{12} \left[ 7 + 3\sin\left(\frac{\pi t}{12}\right) \right] dt \]
+
+\subsection{Procedimiento matemático}
+1. Separamos la integral:
+\[ \int_{0}^{12} 7 \, dt + \int_{0}^{12} 3\sin\left(\frac{\pi t}{12}\right) dt \]
+
+2. Integramos:
+\[ \left[ 7t \right]_{0}^{12} + 3 \left[ -\frac{12}{\pi} \cos\left(\frac{\pi t}{12}\right) \right]_{0}^{12} \]
+
+3. Evaluamos en los límites:
+\[ (84 - 0) - \frac{36}{\pi} (\cos(\pi) - \cos(0)) \]
+\[ 84 - \frac{36}{\pi} (-1 - 1) = 84 + \frac{72}{\pi} \]
+
+4. Resultado final:
+\[ \text{Consumo acumulado} \approx 106.92 \text{ GB}\cdot\text{h} \]
+
+\section{Conclusión}
+El servidor requiere una gestión de memoria que soporte picos de hasta 10 GB de RAM para garantizar la estabilidad de los 50 usuarios concurrentes en las horas de mayor demanda.
+
+\end{document}

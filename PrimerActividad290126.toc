@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{2}{}%
+\contentsline {section}{\numberline {2}Modelado de la Ecuación}{2}{}%
+\contentsline {section}{\numberline {3}Visualización del Consumo}{2}{}%
+\contentsline {section}{\numberline {4}Resolución de la Integral}{2}{}%
+\contentsline {subsection}{\numberline {4.1}Procedimiento matemático}{3}{}%
+\contentsline {section}{\numberline {5}Conclusión}{3}{}%
