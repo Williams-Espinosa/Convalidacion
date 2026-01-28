@@ -1,10 +1,8 @@
 \contentsline {section}{\numberline {1}Introducción}{2}{}%
-\contentsline {section}{\numberline {2}Modelado de la Ecuación}{2}{}%
-\contentsline {subsection}{\numberline {2.1}Consideración de Horas Pico en Chiapas}{2}{}%
-\contentsline {subsection}{\numberline {2.2}Modelo de Usuarios Concurrentes}{3}{}%
-\contentsline {subsection}{\numberline {2.3}Modelo de Consumo de Memoria RAM}{3}{}%
-\contentsline {section}{\numberline {3}Representación Gráfica del Consumo}{4}{}%
-\contentsline {section}{\numberline {4}Resolución de la Integral}{4}{}%
-\contentsline {subsection}{\numberline {4.1}Desarrollo Matemático}{4}{}%
-\contentsline {subsection}{\numberline {4.2}Resultado Final}{5}{}%
-\contentsline {section}{\numberline {5}Conclusión}{5}{}%
+\contentsline {section}{\numberline {2}Modelado Matemático}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Datos}{2}{}%
+\contentsline {subsection}{\numberline {2.2}Usuarios Concurrentes}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Consumo de Memoria RAM}{3}{}%
+\contentsline {section}{\numberline {3}Representación Gráfica}{3}{}%
+\contentsline {section}{\numberline {4}Cálculo Integral}{3}{}%
+\contentsline {section}{\numberline {5}Conclusión}{4}{}%
