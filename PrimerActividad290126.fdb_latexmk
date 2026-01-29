@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1769628903.94424 "/home/williamsel/Convalidacion/PrimerActividad290126.tex" "PrimerActividad290126.pdf" "PrimerActividad290126" 1769628904.86803 0
+["pdflatex"] 1769705705.31212 "/home/williamsel/Convalidacion/PrimerActividad290126.tex" "PrimerActividad290126.pdf" "PrimerActividad290126" 1769705707.12773 0
   "/home/williamsel/.texlive/texmf-var/web2c/pdftex/pdflatex.fmt" 1769483311 2008251 eec9d6d948c382f362efb94a4648ae1e ""
-  "/home/williamsel/Convalidacion/PrimerActividad290126.tex" 1769628903.77224 6528 9ec60608bc54dd16493ee1534305ead9 ""
+  "/home/williamsel/Convalidacion/PrimerActividad290126.tex" 1769705702.95573 8084 4e51d0a69c9e6329c09f62e4092f18b6 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1767555874 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1767555874 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1767555874 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -13,8 +13,6 @@
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm" 1767555874 3584 49064b465390a8e316a3c8417a050403 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1767555874 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1728.tfm" 1767555874 3584 3c76ccb63eda935a68ba65ba9da29f1a ""
-  "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1767555874 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
-  "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm0800.tfm" 1767555874 1536 05df9db6aeccc4eea94fec15c9024f79 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1767555874 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1767555874 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1767555874 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -202,9 +200,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1767555874 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1769533976 5311557 9da84c45f5b388655502706482323571 ""
   "LogoUp.png" 1769536459.11364 275825 b5250ada06b0c7481f92943d1a82d803 ""
-  "PrimerActividad290126.aux" 1769628904.80803 927 94a57e6f7a563f734c1d2a0d0d07d14a "pdflatex"
-  "PrimerActividad290126.tex" 1769628903.77224 6528 9ec60608bc54dd16493ee1534305ead9 ""
-  "PrimerActividad290126.toc" 1769628904.80903 524 83258d5379b17837b3553c42e30f85c2 "pdflatex"
+  "PrimerActividad290126.aux" 1769705707.01932 875 a8e4d4a658c5dd6d246aadc550c36b25 "pdflatex"
+  "PrimerActividad290126.tex" 1769705702.95573 8084 4e51d0a69c9e6329c09f62e4092f18b6 ""
+  "PrimerActividad290126.toc" 1769705707.02032 513 8f1acbdbce89f0537e16a80edf532253 "pdflatex"
   (generated)
   "PrimerActividad290126.aux"
   "PrimerActividad290126.log"

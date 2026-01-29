@@ -1,8 +1,7 @@
 \contentsline {section}{\numberline {1}Introducción}{2}{}%
 \contentsline {section}{\numberline {2}Modelado Matemático}{2}{}%
-\contentsline {subsection}{\numberline {2.1}Datos}{2}{}%
-\contentsline {subsection}{\numberline {2.2}Usuarios Concurrentes}{3}{}%
-\contentsline {subsection}{\numberline {2.3}Consumo de Memoria RAM}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Definición de Variables y Datos}{2}{}%
+\contentsline {subsection}{\numberline {2.2}Proceso de Deducción de la Ecuación}{2}{}%
 \contentsline {section}{\numberline {3}Representación Gráfica}{3}{}%
-\contentsline {section}{\numberline {4}Cálculo Integral}{3}{}%
-\contentsline {section}{\numberline {5}Conclusión}{4}{}%
+\contentsline {section}{\numberline {4}Cálculo Integral (Consumo Acumulado)}{4}{}%
+\contentsline {section}{\numberline {5}Conclusión}{5}{}%

@@ -83,6 +83,7 @@
 \fill[grisosuper] ($(current page.south west)+(0,1.5cm)$) --
 ($(current page.south west)+(4cm,3cm)$) --
 ($(current page.south west)+(4cm,1.5cm)$) -- cycle;
+% Nota: Asegúrate de tener el archivo LogoUp.png o comenta la siguiente línea
 \node at ($(current page.north east)+(-3cm,-3.5cm)$)
 {\includegraphics[width=5cm]{LogoUp.png}};
 \end{tikzpicture}
@@ -135,74 +136,93 @@ Este trabajo se enfoca en el estudio del comportamiento del consumo de memoria R
 
 El consumo de memoria RAM se representa mediante una función matemática que depende del tiempo, permitiendo analizar el comportamiento del sistema durante un periodo de 24 horas.
 
-\subsection{Datos}
+\subsection{Definición de Variables y Datos}
 
 Para el desarrollo del modelo se definen los siguientes datos y variables:
 
 \begin{itemize}
-\item $t$: Tiempo medido en horas, con $t \in [0,24]$.
-\item $U(t)$: Número de usuarios concurrentes en función del tiempo.
-\item $R(t)$: Consumo total de memoria RAM del servidor en GB.
-\item $U_0 = 50$: Número base de usuarios concurrentes.
-\item $\Delta U = 30$: Variación máxima de usuarios en horas pico.
-\item $R_0 = 2$: Consumo base de memoria RAM del sistema (GB).
-\item $r = 0.08$: Consumo promedio de memoria RAM por usuario (GB).
-\item $\sin\left(\frac{\pi t}{12}\right)$: Función que modela el comportamiento periódico del tráfico web.
+\item $t$: Tiempo medido en horas ($t \in [0,24]$).
+\item $R_0 = 2$ GB: Consumo base del sistema operativo y servicios esenciales.
+\item $r = 0.08$ GB: Consumo promedio de memoria RAM por cada usuario conectado.
+\item $U_0 = 50$: Usuarios base concurrentes.
+\item $\Delta U = 30$: Fluctuación máxima de usuarios adicionales en horas pico.
 \end{itemize}
 
-\subsection{Usuarios Concurrentes}
+\subsection{Proceso de Deducción de la Ecuación}
 
-\[
-U(t) = 50 + 30\sin\left(\frac{\pi t}{12}\right)
-\]
+Para obtener la función de consumo total $R(t)$, integramos los componentes de la siguiente manera:
 
-\subsection{Consumo de Memoria RAM}
-
-El consumo total de memoria RAM del servidor se obtiene al considerar la carga base del sistema y el consumo generado por los usuarios:
+\begin{enumerate}
+    \item \textbf{Modelado de Usuarios $U(t)$:} Representamos la afluencia mediante una función periódica (seno) para simular los ciclos de tráfico:
+    \[ U(t) = 50 + 30\sin\left(\frac{\pi t}{12}\right) \]
+    
+    \item \textbf{Cálculo del Consumo por Usuarios:} Multiplicamos el número de usuarios por el consumo individual $r$:
+    \[ R_{usuarios}(t) = 0.08 \cdot \left[ 50 + 30\sin\left(\frac{\pi t}{12}\right) \right] \]
+    \[ R_{usuarios}(t) = 4 + 2.4\sin\left(\frac{\pi t}{12}\right) \]
+    
+    \item \textbf{Suma del Consumo Base del Sistema:} Añadimos el consumo fijo del servidor ($R_0$):
+    \[ R(t) = R_0 + R_{usuarios}(t) = 2 + 4 + 2.4\sin\left(\frac{\pi t}{12}\right) \]
+\end{enumerate}
 
 \begin{cajaresultado}
-\[
-R(t) = R_0 + r\,U(t) = 6 + 2.4\sin\left(\frac{\pi t}{12}\right)
-\]
+La ecuación final que modela el consumo de RAM en GB en función del tiempo $t$ es:
+\[ R(t) = 6 + 2.4\sin\left(\frac{\pi t}{12}\right) \]
 \end{cajaresultado}
 
 % ================= GRÁFICA =================
 \section{Representación Gráfica}
 
+La siguiente gráfica muestra cómo el consumo de RAM oscila entre un mínimo de 3.6 GB y un máximo de 8.4 GB a lo largo del día.
+
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
 title={Consumo de RAM en un Servidor Web},
-xlabel={Hora del día},
+xlabel={Hora del día ($t$)},
 ylabel={RAM (GB)},
 xmin=0, xmax=24,
-ymin=3, ymax=9,
+ymin=0, ymax=10,
+xtick={0,4,8,12,16,20,24},
 grid=both,
 width=13cm,
-height=8cm
+height=8cm,
+line width=1pt
 ]
 \addplot[domain=0:24, samples=200, color=azul, line width=2pt]
 {6 + 2.4*sin(deg(pi*x/12))};
+\addlegendentry{$R(t) = 6 + 2.4\sin(\frac{\pi t}{12})$}
 \end{axis}
 \end{tikzpicture}
 \end{center}
 
 % ================= INTEGRAL =================
-\section{Cálculo Integral}
+\section{Cálculo Integral (Consumo Acumulado)}
 
-Se calcula el consumo acumulado de memoria RAM durante un intervalo de 12 horas:
+Para determinar el consumo total de recursos en la primera mitad del día (intervalo de 0 a 12 horas), aplicamos la integral definida:
 
-\[
-\int_{0}^{12} R(t)\,dt
-= 72 + \frac{57.6}{\pi}
-\approx 90.34\ \text{GB·h}
-\]
+\[ \int_{0}^{12} \left[ 6 + 2.4\sin\left(\frac{\pi t}{12}\right) \right] dt \]
+
+\textbf{Desarrollo paso a paso:}
+\begin{enumerate}
+    \item Separamos la integral en dos partes:
+    \[ \int_{0}^{12} 6 \, dt + \int_{0}^{12} 2.4\sin\left(\frac{\pi t}{12}\right) dt \]
+    
+    \item Resolvemos la primera parte:
+    \[ [6t]_{0}^{12} = 6(12) - 6(0) = 72 \]
+    
+    \item Resolvemos la segunda parte usando la regla de la cadena inversa:
+    \[ 2.4 \left[ -\frac{12}{\pi} \cos\left(\frac{\pi t}{12}\right) \right]_{0}^{12} = -\frac{28.8}{\pi} [\cos(\pi) - \cos(0)] \]
+    \[ -\frac{28.8}{\pi} [-1 - 1] = -\frac{28.8}{\pi} (-2) = \frac{57.6}{\pi} \]
+\end{enumerate}
+
+\begin{cajaresultado}
+El consumo acumulado es:
+\[ \int_{0}^{12} R(t) dt = 72 + \frac{57.6}{\pi} \approx 90.34 \text{ GB}\cdot\text{h} \]
+\end{cajaresultado}
 
 % ================= CONCLUSIÓN =================
 \section{Conclusión}
 
-El modelo matemático desarrollado permite estimar el consumo de memoria RAM de una página web alojada en un servidor, considerando la influencia del número de usuarios concurrentes y las horas pico de acceso.
-
-Los resultados obtenidos facilitan la planificación de recursos, previenen la saturación del sistema y proporcionan una base matemática sólida para la toma de decisiones relacionadas con la administración y dimensionamiento de servidores web.
+El modelo matemático desarrollado permite estimar con precisión el consumo de memoria RAM. A través de la deducción de la ecuación, se observa que el consumo no es estático, sino que depende de una base operativa mínima sumada a la demanda variable de los usuarios. Este tipo de análisis es vital para evitar el desbordamiento de memoria (OOM Killer) en entornos de producción.
 
 \end{document}
