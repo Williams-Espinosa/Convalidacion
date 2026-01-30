@@ -1,3 +1,6 @@
+![Banner](LogoUp.png)
+# 📚 Convalidación de Cálculo Integral
+
 # Convalidación: Cálculo Integral 📐
 
 Este repositorio contiene los trabajos, ejercicios y documentación desarrollados para el proceso de convalidación de la asignatura de **Cálculo Integral**. Todo el material técnico ha sido redactado utilizando **LaTeX** para garantizar una presentación matemática rigurosa.
