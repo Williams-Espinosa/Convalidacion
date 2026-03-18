@@ -1,7 +1,8 @@
-const API_KEY = "yeby qema myhk hist vizw";
+require('dotenv').config();
 
-const SUPABASE_URL = "https://quukwxobgutjycnpidrq.supabase.co/rest/v1/operaciones";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1dWt3eG9iZ3V0anljbnBpZHJxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Mzc5NDI5MCwiZXhwIjoyMDg5MzcwMjkwfQ.ja1zEDeaq3wBWW8ECrH94gv4mfCOWYngmwSXkJ9J_o0";
+const API_KEY = process.env.API_KEY;
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_KEY;
 
 let dinero = 10000;
 let portafolio = {};
