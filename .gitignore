@@ -1,5 +1,10 @@
-
+# 1. Ignore everything
 *
+
+# 2. But DO NOT ignore directories themselves (so Git can look inside them)
+!*/
+
+# 3. Now, un-ignore your specific file types
 !.gitignore
 !README.md
 !*.pdf
@@ -7,18 +12,4 @@
 !*.html
 !*.css
 !*.js
-!*.json
-!*.md
-!*.csv
-!*.xml
-!*.yml
-!*.yaml
-!*.jpg
-!*.jpeg
-!*.png
-!*.gif
-!*.bmp
-!*.svg
-!*.ico
-!*.mp4
-!*.mp3
+# ... (rest of your list)
