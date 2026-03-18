@@ -1,0 +1,197 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+
+\geometry{margin=2.5cm}
+
+\title{Simulador de Bolsa Web con Análisis de Portafolio}
+\date{\today}
+
+\lstset{
+language=JavaScript,
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+stringstyle=\color{red},
+commentstyle=\color{green!60!black}
+}
+
+\begin{document}
+
+% -------- HOJA DE PRESENTACION --------
+
+\begin{titlepage}
+
+\centering
+
+\vspace*{2cm}
+
+{\Large \textbf{Segundo Proyecto}}\\[1cm]
+
+{\LARGE \textbf{Simulador de Bolsa Web con Análisis de Portafolio}}\\[3cm]
+
+\begin{tabular}{rl}
+
+\textbf{Nombre del alumno:} & Williams Espinosa López \\
+
+\textbf{Matrícula:} & 251185 \\
+
+\textbf{Cuatrimestre y grupo:} & 4° “B” \\
+
+\textbf{Docente:} & Sirgei García Ballinas \\
+
+\textbf{Asignatura:} & Cálculo Integral \\
+
+\end{tabular}
+
+\vfill
+
+{\large \today}
+
+\end{titlepage}
+
+% -------- DOCUMENTO --------
+
+\section{Introducción}
+
+Los mercados financieros son sistemas complejos donde los inversionistas compran y venden activos como acciones, bonos y derivados. Para comprender su comportamiento es útil utilizar herramientas de simulación.
+
+Este proyecto consiste en el desarrollo de un simulador de bolsa basado en tecnologías web que permite:
+
+\begin{itemize}
+\item Simular la compra y venta de acciones
+\item Analizar el rendimiento de un portafolio
+\item Aplicar estrategias de trading
+\item Evaluar el riesgo de inversión
+\item Utilizar predicciones mediante inteligencia artificial
+\item Almacenar operaciones en una base de datos
+\end{itemize}
+
+El sistema se implementa utilizando HTML, CSS y JavaScript, integrando además servicios externos para obtener datos financieros reales.
+
+\section{Arquitectura del Sistema}
+
+La aplicación está compuesta por tres capas principales:
+
+\begin{itemize}
+\item \textbf{Frontend}: Interfaz web desarrollada en HTML, CSS y JavaScript.
+\item \textbf{API de datos financieros}: Alpha Vantage para obtener precios reales de acciones.
+\item \textbf{Base de datos}: Supabase con PostgreSQL para almacenar operaciones.
+\end{itemize}
+
+\section{Simulación de Portafolios}
+
+Un portafolio es un conjunto de activos financieros que posee un inversor. El simulador permite crear un portafolio virtual donde el usuario puede comprar y vender acciones.
+
+El valor del portafolio se calcula mediante la fórmula:
+
+\[
+Valor\ del\ Portafolio = \sum_{i=1}^{n} Cantidad_i \times Precio_i
+\]
+
+También se calcula el retorno de la inversión (ROI):
+
+\[
+ROI = \frac{Valor\ actual - Inversión\ inicial}{Inversión\ inicial} \times 100
+\]
+
+El simulador permite visualizar estos resultados en tiempo real mediante gráficos.
+
+\section{Simulación de Estrategias de Trading}
+
+El sistema implementa distintas estrategias de trading para analizar posibles escenarios de inversión.
+
+\subsection{Buy and Hold}
+
+La estrategia Buy and Hold consiste en comprar un activo y mantenerlo durante un largo periodo esperando que su valor aumente.
+
+\subsection{Momentum}
+
+La estrategia Momentum se basa en la idea de que los activos que han mostrado una tendencia alcista continuarán subiendo en el corto plazo.
+
+\section{Análisis de Riesgo}
+
+El riesgo de una inversión se mide normalmente mediante la volatilidad.
+
+La volatilidad se calcula utilizando la desviación estándar:
+
+\[
+\sigma = \sqrt{\frac{\sum (x_i - \mu)^2}{n}}
+\]
+
+donde:
+
+\begin{itemize}
+\item $x_i$ representa cada precio
+\item $\mu$ es la media de los precios
+\item $n$ es el número de observaciones
+\end{itemize}
+
+Una mayor volatilidad indica mayor riesgo en la inversión.
+
+\section{Uso de Aprendizaje Automático}
+
+El simulador incluye un módulo de predicción basado en aprendizaje automático. Este módulo genera estimaciones del precio futuro de un activo utilizando modelos probabilísticos simples.
+
+En implementaciones más avanzadas podrían utilizarse algoritmos como:
+
+\begin{itemize}
+\item Redes neuronales
+\item Regresión lineal
+\item Modelos ARIMA
+\end{itemize}
+
+\section{Integración con Bases de Datos}
+
+Para almacenar las operaciones de compra y venta se utiliza Supabase, una plataforma basada en PostgreSQL.
+
+Cada operación incluye:
+
+\begin{itemize}
+\item Tipo de operación
+\item Símbolo de la acción
+\item Cantidad
+\item Precio
+\item Fecha
+\end{itemize}
+
+Esto permite mantener un historial de operaciones y analizar el rendimiento del portafolio.
+
+\section{Obtención de Datos Financieros}
+
+Para obtener datos reales del mercado se utiliza la API Alpha Vantage.
+
+Ejemplo de consulta:
+
+\begin{lstlisting}
+https://www.alphavantage.co/query
+?function=GLOBAL_QUOTE
+&symbol=AAPL
+&apikey=TU_API_KEY
+\end{lstlisting}
+
+Esta consulta devuelve el precio actual de una acción.
+
+\section{Tecnologías Utilizadas}
+
+\begin{itemize}
+\item HTML5
+\item CSS3
+\item JavaScript
+\item Chart.js
+\item Alpha Vantage API
+\item Supabase (PostgreSQL)
+\end{itemize}
+
+\section{Conclusión}
+
+El simulador desarrollado demuestra cómo las tecnologías web modernas pueden utilizarse para crear herramientas de análisis financiero.
+
+La integración de APIs externas, bases de datos y algoritmos de simulación permite construir aplicaciones educativas que ayudan a comprender el funcionamiento de los mercados financieros.
+
+\end{document}

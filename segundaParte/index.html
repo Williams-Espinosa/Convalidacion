@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Simulador de Bolsa</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1>Simulador de Bolsa</h1>
+
+<div class="stats">
+
+<p>Saldo: $<span id="saldo">10000</span></p>
+
+<p>Valor portafolio: $<span id="valor">0</span></p>
+
+<p>ROI: <span id="roi">0%</span></p>
+
+</div>
+
+<hr>
+
+<h2>Buscar Acción</h2>
+
+<input id="symbol" placeholder="AAPL">
+
+<button onclick="buscar()">Buscar</button>
+
+<p id="precio">Precio: —</p>
+
+<input id="cantidad" type="number" value="1">
+
+<button id="comprarBtn" onclick="comprar()" disabled>Comprar</button>
+
+<button id="venderBtn" onclick="vender()" disabled>Vender</button>
+
+<hr>
+
+<h2>Portafolio</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Activo</th>
+<th>Cantidad</th>
+<th>Precio compra</th>
+<th>Precio actual</th>
+<th>ROI</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tablaPortafolio">
+
+<tr>
+
+<td colspan="5">Sin activos</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<hr>
+
+<h2>Gráfica</h2>
+
+<canvas id="grafica"></canvas>
+
+<hr>
+
+<h2>Simulación Monte Carlo</h2>
+
+<button onclick="simulacionMonteCarlo()">
+
+Simular 30 días
+
+</button>
+
+<hr>
+
+<h2>Simulación de Portafolio</h2>
+
+<button onclick="simularPortafolio()">
+
+Simular crecimiento portafolio
+
+</button>
+
+<hr>
+
+<h2>Estrategia Trading</h2>
+
+<button onclick="estrategiaBuyHold()">
+
+Buy and Hold
+
+</button>
+
+<button onclick="estrategiaMomentum()">
+
+Momentum
+
+</button>
+
+<hr>
+
+<h2>Análisis de Riesgo</h2>
+
+<button onclick="analizarRiesgo()">
+
+Calcular volatilidad
+
+</button>
+
+<hr>
+
+<h2>Predicción IA</h2>
+
+<button onclick="prediccionIA()">
+
+Predecir precio futuro
+
+</button>
+
+<hr>
+
+<h2>Historial Base de Datos</h2>
+
+<button onclick="cargarOperaciones()">
+
+Cargar historial
+
+</button>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Tipo</th>
+<th>Activo</th>
+<th>Cantidad</th>
+<th>Precio</th>
+<th>Fecha</th>
+
+</tr>
+
+</thead>
+
+<tbody id="historial">
+
+<tr>
+
+<td colspan="5">Sin datos</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<hr>
+
+<h2>Registro</h2>
+
+<div id="log"></div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
