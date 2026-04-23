@@ -1,32 +1,25 @@
 \documentclass[12pt,a4paper]{article}
 
-% ----- CODIFICACIÓN Y FUENTES -----
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-% ----- IDIOMA (cargar ANTES de tikz para evitar conflictos con babel) -----
 \usepackage[spanish]{babel}
 
-% ----- MATEMÁTICAS Y GEOMETRÍA -----
 \usepackage{amsmath, amssymb}
 \usepackage{geometry}
 \geometry{margin=2.5cm, top=3cm, bottom=3cm}
 
-% ----- COLORES -----
 \usepackage{xcolor}
 \definecolor{azul}{RGB}{0,51,102}
 \definecolor{azuloscuro}{RGB}{0,40,80}
 \definecolor{grisosuper}{RGB}{51,63,72}
 \definecolor{grisclaro}{RGB}{240,242,245}
 
-% ----- GRÁFICOS (tikz después de babel) -----
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, positioning, calc}
 
-% ----- CAJAS DE COLOR -----
 \usepackage[most]{tcolorbox}
 
-% ----- OTROS PAQUETES -----
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -36,7 +29,6 @@
 \setlength{\headheight}{24.64995pt}
 \onehalfspacing
 
-% ----- FORMATO DE TÍTULOS -----
 \titleformat{\section}
 {\normalfont\fontsize{16}{19}\bfseries\color{grisosuper}}
 {\thesection}{1em}{}
@@ -46,7 +38,6 @@
 {\normalfont\fontsize{14}{17}\bfseries\color{azul}}
 {\thesubsection}{1em}{}
 
-% ----- ENCABEZADO Y PIE DE PÁGINA -----
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\color{azul}\textbf{Simulador de Bolsa Web}}
@@ -55,7 +46,6 @@
 \renewcommand{\headrulewidth}{2pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{azul}\leaders\hrule height \headrulewidth\hfill}}
 
-% ----- CAJAS PERSONALIZADAS -----
 \newtcolorbox{cajaconcepto}{
     colback=grisclaro,
     colframe=azul,
@@ -71,7 +61,6 @@
     title=Resultado
 }
 
-% ----- ESTILO DE CÓDIGO -----
 \lstset{
     basicstyle=\ttfamily\small,
     keywordstyle=\color{azul},
@@ -83,7 +72,6 @@
 
 \begin{document}
 
-% ================= PORTADA =================
 \begin{titlepage}
 \begin{tikzpicture}[remember picture, overlay]
 \fill[azul] (current page.north west) rectangle ($(current page.north east)+(0,-1.5cm)$);
@@ -125,7 +113,6 @@ con Análisis de Portafolio\par}
 \tableofcontents
 \newpage
 
-% ================= INTRO =================
 \section{Introducción}
 
 Los mercados financieros son sistemas complejos donde los inversionistas compran y venden activos como acciones.
@@ -134,7 +121,6 @@ Los mercados financieros son sistemas complejos donde los inversionistas compran
 \textbf{Objetivo:} Desarrollar un simulador web que permita analizar inversiones, calcular rendimientos y comprender el comportamiento del mercado financiero.
 \end{cajaconcepto}
 
-% ================= ARQUITECTURA =================
 \section{Arquitectura del Sistema}
 
 \begin{itemize}
@@ -143,7 +129,6 @@ Los mercados financieros son sistemas complejos donde los inversionistas compran
     \item Base de datos (Supabase - PostgreSQL)
 \end{itemize}
 
-% ================= PORTAFOLIO =================
 \section{Simulación de Portafolios}
 
 El valor del portafolio se calcula mediante:
@@ -162,7 +147,6 @@ También se calcula el ROI:
 ROI = \frac{Valor\ actual - Inversi\'on\ inicial}{Inversi\'on\ inicial} \times 100
 \]
 
-% ================= ESTRATEGIAS =================
 \section{Estrategias de Trading}
 
 \subsection{Buy and Hold}
@@ -171,7 +155,6 @@ Consiste en mantener activos a largo plazo.
 \subsection{Momentum}
 Se basa en seguir tendencias del mercado.
 
-% ================= RIESGO =================
 \section{Análisis de Riesgo}
 
 La volatilidad se calcula con:
@@ -184,7 +167,6 @@ La volatilidad se calcula con:
 Mayor volatilidad implica mayor riesgo.
 \end{cajaconcepto}
 
-% ================= IA =================
 \section{Uso de Modelos Predictivos}
 
 Se utilizan modelos como:
@@ -195,7 +177,6 @@ Se utilizan modelos como:
     \item ARIMA
 \end{itemize}
 
-% ================= BASE DE DATOS =================
 \section{Base de Datos}
 
 Se almacenan:
@@ -207,7 +188,6 @@ Se almacenan:
     \item Fecha
 \end{itemize}
 
-% ================= API =================
 \section{API Financiera}
 
 \begin{lstlisting}
@@ -217,7 +197,6 @@ https://www.alphavantage.co/query
     &apikey=TU_API_KEY
 \end{lstlisting}
 
-% ================= TECNOLOGIAS =================
 \section{Tecnologías}
 
 \begin{itemize}
@@ -227,7 +206,6 @@ https://www.alphavantage.co/query
     \item Alpha Vantage
 \end{itemize}
 
-% ================= CONCLUSION =================
 \section{Conclusión}
 
 El desarrollo de este simulador de bolsa web permitió integrar de manera práctica los conocimientos adquiridos en la asignatura de Cálculo Integral con herramientas tecnológicas modernas, logrando un sistema funcional que no solo simula operaciones financieras, sino que además aplica modelos matemáticos para analizar el comportamiento del mercado.

@@ -1,0 +1,185 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[spanish]{babel}
+
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm, top=3cm, bottom=3cm}
+
+\usepackage{xcolor}
+\definecolor{azul}{RGB}{0,51,102}
+\definecolor{azuloscuro}{RGB}{0,40,80}
+\definecolor{grisosuper}{RGB}{51,63,72}
+\definecolor{grisclaro}{RGB}{240,242,245}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning, calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{titlesec}
+
+\setlength{\headheight}{24.64995pt}
+\onehalfspacing
+
+\titleformat{\section}
+{\normalfont\fontsize{16}{19}\bfseries\color{grisosuper}}
+{\thesection}{1em}{}
+[\vspace{0.3em}{\color{azul}\titlerule[2pt]}]
+
+\titleformat{\subsection}
+{\normalfont\fontsize{14}{17}\bfseries\color{azul}}
+{\thesubsection}{1em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\color{azul}\textbf{Análisis de Consumo de RAM}}
+\fancyhead[R]{\color{grisosuper}\textbf{Actividad: Convalidación}}
+\fancyfoot[C]{\color{grisosuper}\thepage}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{azul}\leaders\hrule height \headrulewidth\hfill}}
+
+\newtcolorbox{cajaconcepto}{
+    colback=grisclaro,
+    colframe=azul,
+    boxrule=2pt,
+    arc=3mm,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt
+}
+
+\newtcolorbox{cajaresultado}{
+    colback=azul!10,
+    colframe=azuloscuro,
+    boxrule=2.5pt,
+    arc=2mm,
+    fonttitle=\bfseries\color{white},
+    colbacktitle=azuloscuro,
+    title=Resultado
+}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{tikzpicture}[remember picture, overlay]
+\fill[azul] (current page.north west) rectangle ($(current page.north east)+(0,-1.5cm)$);
+\fill[grisosuper] ($(current page.north west)+(0,-1.5cm)$) --
+    ($(current page.north west)+(4cm,-3cm)$) --
+    ($(current page.north west)+(4cm,-1.5cm)$) -- cycle;
+\fill[azul] (current page.south west) rectangle ($(current page.south east)+(0,1.5cm)$);
+\fill[grisosuper] ($(current page.south west)+(0,1.5cm)$) --
+    ($(current page.south west)+(4cm,3cm)$) --
+    ($(current page.south west)+(4cm,1.5cm)$) -- cycle;
+\end{tikzpicture}
+
+\vspace*{3cm}
+\centering
+
+{\bfseries\fontsize{20}{24}\selectfont Análisis de Consumo de RAM\\
+en Servidores Web\par}
+
+\vspace{0.4cm}
+{\color{azul}\rule{8cm}{2pt}\par}
+
+\vspace{1.5cm}
+{\bfseries Actividad: Convalidación\par}
+
+\vspace{2cm}
+
+\begin{tabular}{rl}
+\textbf{Nombre del alumno:} & Williams Espinosa López \\
+\textbf{Matrícula:} & 251185 \\
+\textbf{Cuatrimestre y grupo:} & 4\textordmasculine{} ``B'' \\
+\textbf{Docente:} & Sirgei García Ballinas \\
+\textbf{Asignatura:} & Cálculo Integral
+\end{tabular}
+
+\vfill
+Jueves, 29 de enero de 2026
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introducción}
+
+El análisis del consumo de memoria RAM en un servidor web es un aspecto fundamental para garantizar el correcto funcionamiento de una página web. La cantidad de usuarios que acceden simultáneamente y los periodos de mayor actividad influyen directamente en el uso de recursos del sistema.
+
+\begin{cajaconcepto}
+\textbf{Objetivo:} Modelar una ecuación matemática que permita determinar el consumo de memoria RAM de una página web alojada en un servidor, considerando la presencia de horas pico de uso y una carga aproximada de 50 usuarios concurrentes.
+\end{cajaconcepto}
+
+\section{Modelado Matemático}
+
+\subsection{Definición de Variables y Datos}
+\begin{itemize}
+    \item $t$: Tiempo medido en horas ($t \in [0,24]$).
+    \item $R_0 = 2$ GB: Consumo base del sistema operativo.
+    \item $r = 0.08$ GB: Consumo promedio por usuario.
+    \item $U_0 = 50$: Usuarios base concurrentes.
+    \item $\Delta U = 30$: Fluctuación máxima en horas pico.
+\end{itemize}
+
+\subsection{Proceso de Deducción}
+\[
+R(t) = R_0 + r \cdot \left[ U_0 + \Delta U \sin\left(\frac{\pi t}{12}\right) \right]
+\]
+
+\begin{cajaresultado}
+La ecuación que modela el consumo de RAM en GB es:
+\[
+R(t) = 6 + 2.4\sin\left(\frac{\pi t}{12}\right)
+\]
+\end{cajaresultado}
+
+\section{Representación Gráfica}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    title={Consumo de RAM en un Servidor Web},
+    xlabel={Hora del día ($t$)},
+    ylabel={RAM (GB)},
+    xmin=0, xmax=24,
+    ymin=0, ymax=10,
+    xtick={0,4,8,12,16,20,24},
+    grid=both,
+    width=13cm,
+    height=8cm,
+    line width=1pt
+]
+\addplot[domain=0:24, samples=200, color=azul, line width=2pt]
+    {6 + 2.4*sin(deg(pi*x/12))};
+\addlegendentry{$R(t) = 6 + 2.4\sin(\frac{\pi t}{12})$}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\section{Cálculo Integral}
+
+\[
+\int_{0}^{12} \left[ 6 + 2.4\sin\left(\frac{\pi t}{12}\right) \right] dt
+\]
+
+\begin{cajaresultado}
+El consumo acumulado es:
+\[
+\int_{0}^{12} R(t)\, dt = 72 + \frac{57.6}{\pi} \approx 90.34 \text{ GB}\cdot\text{h}
+\]
+\end{cajaresultado}
+
+\section{Conclusión}
+
+El modelo permite estimar con precisión el consumo de memoria RAM. Este tipo de análisis es vital para evitar el desbordamiento de memoria en entornos de producción, especialmente en lenguajes como Java o Kotlin donde la gestión del Heap es crítica.
+
+\end{document}
