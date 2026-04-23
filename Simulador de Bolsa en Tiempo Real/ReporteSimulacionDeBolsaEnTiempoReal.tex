@@ -1,0 +1,239 @@
+\documentclass[12pt,a4paper]{article}
+
+% ----- CODIFICACIÓN Y FUENTES -----
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% ----- IDIOMA (cargar ANTES de tikz para evitar conflictos con babel) -----
+\usepackage[spanish]{babel}
+
+% ----- MATEMÁTICAS Y GEOMETRÍA -----
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm, top=3cm, bottom=3cm}
+
+% ----- COLORES -----
+\usepackage{xcolor}
+\definecolor{azul}{RGB}{0,51,102}
+\definecolor{azuloscuro}{RGB}{0,40,80}
+\definecolor{grisosuper}{RGB}{51,63,72}
+\definecolor{grisclaro}{RGB}{240,242,245}
+
+% ----- GRÁFICOS (tikz después de babel) -----
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning, calc}
+
+% ----- CAJAS DE COLOR -----
+\usepackage[most]{tcolorbox}
+
+% ----- OTROS PAQUETES -----
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{titlesec}
+
+\setlength{\headheight}{24.64995pt}
+\onehalfspacing
+
+% ----- FORMATO DE TÍTULOS -----
+\titleformat{\section}
+{\normalfont\fontsize{16}{19}\bfseries\color{grisosuper}}
+{\thesection}{1em}{}
+[\vspace{0.3em}{\color{azul}\titlerule[2pt]}]
+
+\titleformat{\subsection}
+{\normalfont\fontsize{14}{17}\bfseries\color{azul}}
+{\thesubsection}{1em}{}
+
+% ----- ENCABEZADO Y PIE DE PÁGINA -----
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\color{azul}\textbf{Simulador de Bolsa Web}}
+\fancyhead[R]{\color{grisosuper}\textbf{Actividad: Proyecto}}
+\fancyfoot[C]{\color{grisosuper}\thepage}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{azul}\leaders\hrule height \headrulewidth\hfill}}
+
+% ----- CAJAS PERSONALIZADAS -----
+\newtcolorbox{cajaconcepto}{
+    colback=grisclaro,
+    colframe=azul,
+    boxrule=2pt,
+    arc=3mm
+}
+
+\newtcolorbox{cajaresultado}{
+    colback=azul!10,
+    colframe=azuloscuro,
+    boxrule=2.5pt,
+    arc=2mm,
+    title=Resultado
+}
+
+% ----- ESTILO DE CÓDIGO -----
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{azul},
+    stringstyle=\color{red},
+    commentstyle=\color{green!60!black},
+    breaklines=true,
+    columns=flexible
+}
+
+\begin{document}
+
+% ================= PORTADA =================
+\begin{titlepage}
+\begin{tikzpicture}[remember picture, overlay]
+\fill[azul] (current page.north west) rectangle ($(current page.north east)+(0,-1.5cm)$);
+\fill[grisosuper] ($(current page.north west)+(0,-1.5cm)$) --
+    ($(current page.north west)+(4cm,-3cm)$) --
+    ($(current page.north west)+(4cm,-1.5cm)$) -- cycle;
+\fill[azul] (current page.south west) rectangle ($(current page.south east)+(0,1.5cm)$);
+\fill[grisosuper] ($(current page.south west)+(0,1.5cm)$) --
+    ($(current page.south west)+(4cm,3cm)$) --
+    ($(current page.south west)+(4cm,1.5cm)$) -- cycle;
+\end{tikzpicture}
+
+\vspace*{3cm}
+\centering
+
+{\bfseries\fontsize{20}{24}\selectfont Simulador de Bolsa Web\\
+con Análisis de Portafolio\par}
+
+\vspace{0.4cm}
+{\color{azul}\rule{8cm}{2pt}\par}
+
+\vspace{1.5cm}
+{\bfseries Segundo Proyecto\par}
+
+\vspace{2cm}
+
+\begin{tabular}{rl}
+\textbf{Nombre del alumno:} & Williams Espinosa López \\
+\textbf{Matrícula:} & 251185 \\
+\textbf{Cuatrimestre y grupo:} & 4\textordmasculine{} ``B'' \\
+\textbf{Docente:} & Sirgei García Ballinas \\
+\textbf{Asignatura:} & Cálculo Integral
+\end{tabular}
+
+\vfill
+\today
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ================= INTRO =================
+\section{Introducción}
+
+Los mercados financieros son sistemas complejos donde los inversionistas compran y venden activos como acciones.
+
+\begin{cajaconcepto}
+\textbf{Objetivo:} Desarrollar un simulador web que permita analizar inversiones, calcular rendimientos y comprender el comportamiento del mercado financiero.
+\end{cajaconcepto}
+
+% ================= ARQUITECTURA =================
+\section{Arquitectura del Sistema}
+
+\begin{itemize}
+    \item Frontend (HTML, CSS, JavaScript)
+    \item API financiera (Alpha Vantage)
+    \item Base de datos (Supabase - PostgreSQL)
+\end{itemize}
+
+% ================= PORTAFOLIO =================
+\section{Simulación de Portafolios}
+
+El valor del portafolio se calcula mediante:
+
+\[
+Valor = \sum_{i=1}^{n} Cantidad_i \cdot Precio_i
+\]
+
+\begin{cajaresultado}
+Permite conocer el valor total en tiempo real.
+\end{cajaresultado}
+
+También se calcula el ROI:
+
+\[
+ROI = \frac{Valor\ actual - Inversi\'on\ inicial}{Inversi\'on\ inicial} \times 100
+\]
+
+% ================= ESTRATEGIAS =================
+\section{Estrategias de Trading}
+
+\subsection{Buy and Hold}
+Consiste en mantener activos a largo plazo.
+
+\subsection{Momentum}
+Se basa en seguir tendencias del mercado.
+
+% ================= RIESGO =================
+\section{Análisis de Riesgo}
+
+La volatilidad se calcula con:
+
+\[
+\sigma = \sqrt{\frac{\sum (x_i - \mu)^2}{n}}
+\]
+
+\begin{cajaconcepto}
+Mayor volatilidad implica mayor riesgo.
+\end{cajaconcepto}
+
+% ================= IA =================
+\section{Uso de Modelos Predictivos}
+
+Se utilizan modelos como:
+
+\begin{itemize}
+    \item Regresión lineal
+    \item Redes neuronales
+    \item ARIMA
+\end{itemize}
+
+% ================= BASE DE DATOS =================
+\section{Base de Datos}
+
+Se almacenan:
+
+\begin{itemize}
+    \item Tipo de operación
+    \item Acción
+    \item Precio
+    \item Fecha
+\end{itemize}
+
+% ================= API =================
+\section{API Financiera}
+
+\begin{lstlisting}
+https://www.alphavantage.co/query
+    ?function=GLOBAL_QUOTE
+    &symbol=AAPL
+    &apikey=TU_API_KEY
+\end{lstlisting}
+
+% ================= TECNOLOGIAS =================
+\section{Tecnologías}
+
+\begin{itemize}
+    \item HTML, CSS, JavaScript
+    \item Chart.js
+    \item Supabase
+    \item Alpha Vantage
+\end{itemize}
+
+% ================= CONCLUSION =================
+\section{Conclusión}
+
+El desarrollo de este simulador de bolsa web permitió integrar de manera práctica los conocimientos adquiridos en la asignatura de Cálculo Integral con herramientas tecnológicas modernas, logrando un sistema funcional que no solo simula operaciones financieras, sino que además aplica modelos matemáticos para analizar el comportamiento del mercado.
+
+\begin{cajaconcepto}
+\textbf{Aporte principal:} El proyecto evidencia que los conceptos de integración, sumatorias y análisis estadístico no son meramente teóricos, sino que constituyen la base matemática sobre la cual se sustentan las decisiones de inversión en los mercados financieros reales.
+\end{cajaconcepto}
+
+\end{document}

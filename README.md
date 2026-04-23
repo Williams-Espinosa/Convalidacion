@@ -9,63 +9,34 @@ Además de las actividades académicas, el repositorio incluye un **Simulador de
 ## 📂 Contenido del Repositorio
 
 ### 📝 Actividades Académicas
-Resolución de ejercicios y problemas teóricos del programa de la asignatura.
 
-* **Actividad 1:** Resolución de ejercicios iniciales (Entrega Primera Parte).
-    * 📄 [Ver PDF](PrimerActividad290126.pdf)
-    * ⌨️ [Fuente LaTeX](PrimerActividad290126.tex)
+* [**Actividad 1:** Análisis de consumo de RAM en servidores](./Análisis%20de%20Consumo%20de%20RAM/README.md)
+    * 📄 [Ver PDF](./Análisis%20de%20Consumo%20de%20RAM/PrimerActividad290126.pdf)
+    * ⌨️ [Fuente LaTeX](./Análisis%20de%20Consumo%20de%20RAM/PrimerActividad290126.tex)
 
-* **Actovodad 2:** Simulador de Bolsa Web (Entrega segunda parte).
+* [**Actividad 2:** Simulador de Bolsa en Tiempo Real](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/README.md)
+    * 📄 [Ver PDF](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/documento.pdf)
+    * ⌨️ [Fuente LaTeX](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/documento.tex)
 
-#### Funcionalidades Principales:
-* **Real-time Data:** Consulta de precios de acciones mediante API.
-* **Gestión de Activos:** Simulación de compra/venta y gestión de portafolios.
-* **Análisis de Riesgo:** Cálculo de volatilidad y estrategias de trading.
-* **IA Predictiva:** Predicción de precios mediante modelos de simulación.
-* **Persistencia:** Registro histórico de operaciones en base de datos.
-
----
-
-## 🧮 Conceptos Matemáticos Aplicados
-
-El proyecto traslada la teoría del cálculo y la estadística al entorno financiero:
-
-| Concepto | Aplicación en el Simulador |
-| :--- | :--- |
-| **Cálculo Integral** | Determinación de retornos acumulados y áreas bajo la curva de rendimiento. |
-| **Volatilidad** | Uso de desviación estándar para medir el riesgo de activos. |
-| **Probabilidad** | Simulación del comportamiento del mercado (Monte Carlo / Estocásticos). |
-| **Análisis Estadístico** | Procesamiento de series de tiempo y medias móviles. |
+* [**Actividad 3:** Teorema de Gauss-Ostrogradsky](./Teorema%20de%20Gauss-Ostrogradsky/README.md)
+    * 📄 [Ver reporte](./Teorema%20de%20Gauss-Ostrogradsky/reporte.tex) (Fuente LaTeX)
+    * 🐍 [Ejemplos en Python](./Teorema%20de%20Gauss-Ostrogradsky/)
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
 ### Documentación Científica
-* **LaTeX**: (MiKTeX / Overleaf) para la redacción de documentos técnicos.
+* **LaTeX**: para la redacción de documentos técnicos y matemáticos.
 
-### Desarrollo de Software
-* **Frontend:** HTML5, CSS3, JavaScript.
-* **Gráficos:** [Chart.js](https://www.chartjs.org/) para visualización de tendencias.
-* **Backend & DB:** [Supabase](https://supabase.com/) (PostgreSQL) para el historial de transacciones.
-* **Datos Financieros:** [Alpha Vantage API](https://www.alphavantage.co/).
+### Desarrollo 
+* **Lenguajes:** HTML5, CSS3, JavaScript, Python.
 
 ---
 
-## 🚀 Guía de Visualización
-
-1.  **Documentos:** Se recomienda abrir directamente los archivos `.pdf` en el navegador para una lectura rápida.
-2.  **Compilación:** Si deseas editar los documentos, asegúrate de tener una distribución de LaTeX (como TeX Live) o subir los archivos `.tex` a Overleaf.
-3.  **Simulador:** ```bash
-    # Ejemplo de consulta a la API utilizada
-    [https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=TU_API_KEY](https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=TU_API_KEY)
-    ```
-
----
-
-## 👨‍💻 Autor
+## Autor
 **Williams Espinosa López**
 * **GitHub:** [Williams-Espinosa](https://github.com/Williams-Espinosa)
 
 ---
-> *Este repositorio fue creado con fines académicos para demostrar la integración de programación, simulación y documentación científica.*
+> *Este repositorio fue creado con fines académicos para demostrar la integración de programación, simulación y documentación científica en el área de ingeniería.*
