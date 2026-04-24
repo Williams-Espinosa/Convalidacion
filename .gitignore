@@ -12,4 +12,5 @@
 !*.html
 !*.css
 !*.js
+!*.py
 # ... (rest of your list)
