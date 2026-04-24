@@ -2,41 +2,34 @@
 
 Este repositorio contiene los trabajos, ejercicios y documentación técnica desarrollados para el proceso de convalidación de la asignatura de **Cálculo Integral**. Todo el material ha sido redactado utilizando **LaTeX** para garantizar una presentación matemática rigurosa y profesional.
 
-Además de las actividades académicas, el repositorio incluye un **Simulador de Bolsa Web**, donde se aplican conceptos de cálculo y estadística al análisis de mercados financieros.
-
 ---
 
 ## 📂 Contenido del Repositorio
 
 ### 📝 Actividades Académicas
 
-* [**Actividad 1:** Análisis de consumo de RAM en servidores](./Análisis%20de%20Consumo%20de%20RAM/README.md)
-    * 📄 [Ver PDF](./Análisis%20de%20Consumo%20de%20RAM/PrimerActividad290126.pdf)
-    * ⌨️ [Fuente LaTeX](./Análisis%20de%20Consumo%20de%20RAM/PrimerActividad290126.tex)
+* [**Actividad 1: Análisis de consumo de RAM en servidores**](./Analisis%20de%20Consumo%20de%20RAM%20%20en%20Servidores%20Web/README.md)
+    * 📄 [Ver PDF](./Analisis%20de%20Consumo%20de%20RAM%20%20en%20Servidores%20Web/ReporteAnalisisDeConsumoDeRamEnServidoresWeb.pdf)
+    * ⌨️ [Fuente LaTeX](./Analisis%20de%20Consumo%20de%20RAM%20%20en%20Servidores%20Web/ReporteAnalisisDeConsumoDeRamEnServidoresWeb.tex)
 
-* [**Actividad 2:** Simulador de Bolsa en Tiempo Real](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/README.md)
-    * 📄 [Ver PDF](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/documento.pdf)
-    * ⌨️ [Fuente LaTeX](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/documento.tex)
+* [**Actividad 2: Simulador de Bolsa en Tiempo Real**](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/README.md)
+    * 📄 [Ver PDF](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/ReporteSimulacionDeBolsaEnTiempoReal.pdf)
+    * ⌨️ [Fuente LaTeX](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/ReporteSimulacionDeBolsaEnTiempoReal.tex)
+    * 🌐 [Abrir Simulador Web](./Simulador%20de%20Bolsa%20en%20Tiempo%20Real/index.html)
 
-* [**Actividad 3:** Teorema de Gauss-Ostrogradsky](./Teorema%20de%20Gauss-Ostrogradsky/README.md)
-    * 📄 [Ver reporte](./Teorema%20de%20Gauss-Ostrogradsky/reporte.tex) (Fuente LaTeX)
-    * 🐍 [Ejemplos en Python](./Teorema%20de%20Gauss-Ostrogradsky/)
+* [**Actividad 3: Teorema de Gauss-Ostrogradsky**](./Teorema%20de%20Gauss-Ostrogradsky/README.md)
+    * 📄 [Ver reporte PDF](./Teorema%20de%20Gauss-Ostrogradsky/Gauss.Ostrogradsky.WilliamsEspinosaLopez.251185.pdf)
+    * ⌨️ [Fuente LaTeX](./Teorema%20de%20Gauss-Ostrogradsky/Gauss.Ostrogradsky.WilliamsEspinosaLopez.251185.tex)
+    * 🐍 [Ejemplos en Python](./Teorema%20de%20Gauss-Ostrogradsky/Gauss.Ostrogradsky.WilliamsEspinosaLopez.251185.py)
 
 ---
 
 ## 🛠️ Stack Tecnológico
-
-### Documentación Científica
-* **LaTeX**: para la redacción de documentos técnicos y matemáticos.
-
-### Desarrollo 
-* **Lenguajes:** HTML5, CSS3, JavaScript, Python.
+* **Documentación:** LaTeX (Overleaf).
+* **Desarrollo:** HTML5, CSS3, JavaScript, Python.
 
 ---
 
 ## Autor
 **Williams Espinosa López**
 * **GitHub:** [Williams-Espinosa](https://github.com/Williams-Espinosa)
-
----
-> *Este repositorio fue creado con fines académicos para demostrar la integración de programación, simulación y documentación científica en el área de ingeniería.*

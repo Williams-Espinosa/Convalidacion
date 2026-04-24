@@ -1,0 +1,467 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[spanish]{babel}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{esint} 
+\usepackage{geometry}
+\geometry{margin=2.5cm, top=3cm, bottom=3cm}
+
+\usepackage{xcolor}
+\definecolor{azul}{RGB}{0,51,102}
+\definecolor{azuloscuro}{RGB}{0,40,80}
+\definecolor{grisosuper}{RGB}{51,63,72}
+\definecolor{grisclaro}{RGB}{240,242,245}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, positioning, calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.5,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.96,0.96,0.94}
+
+\lstdefinestyle{pystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{azul}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=6pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{gray!40},
+    language=Python
+}
+\lstset{style=pystyle}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=azul,
+    urlcolor=azul,
+    citecolor=azul
+}
+
+\setlength{\headheight}{24.64995pt}
+\onehalfspacing
+
+\titleformat{\section}
+{\normalfont\fontsize{16}{19}\bfseries\color{grisosuper}}
+{\thesection}{1em}{}
+[\vspace{0.3em}{\color{azul}\titlerule[2pt]}]
+
+\titleformat{\subsection}
+{\normalfont\fontsize{14}{17}\bfseries\color{azul}}
+{\thesubsection}{1em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\color{grisosuper}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newtcolorbox{cajaconcepto}{
+    colback=grisclaro,
+    colframe=azul,
+    boxrule=2pt,
+    arc=3mm,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt
+}
+
+\newtcolorbox{cajaresultado}{
+    colback=azul!10,
+    colframe=azuloscuro,
+    boxrule=2.5pt,
+    arc=2mm,
+    fonttitle=\bfseries\color{white},
+    colbacktitle=azuloscuro,
+    title=Resultado
+}
+
+\newtcolorbox{cajateorema}{
+    colback=azul!5,
+    colframe=azul,
+    boxrule=2.5pt,
+    arc=2mm,
+    fonttitle=\bfseries\color{white},
+    colbacktitle=azul,
+    title=Teorema de Gauss--Ostrogradsky
+}
+
+\newtcolorbox{cajadefinicion}[1]{
+    colback=grisclaro,
+    colframe=grisosuper,
+    boxrule=2pt,
+    arc=2mm,
+    fonttitle=\bfseries\color{white},
+    colbacktitle=grisosuper,
+    title=#1
+}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{tikzpicture}[remember picture, overlay]
+\fill[azul] (current page.north west) rectangle ($(current page.north east)+(0,-1.5cm)$);
+\fill[grisosuper] ($(current page.north west)+(0,-1.5cm)$) --
+    ($(current page.north west)+(4cm,-3cm)$) --
+    ($(current page.north west)+(4cm,-1.5cm)$) -- cycle;
+\fill[azul] (current page.south west) rectangle ($(current page.south east)+(0,1.5cm)$);
+\fill[grisosuper] ($(current page.south west)+(0,1.5cm)$) --
+    ($(current page.south west)+(4cm,3cm)$) --
+    ($(current page.south west)+(4cm,1.5cm)$) -- cycle;
+\end{tikzpicture}
+
+\vspace*{3cm}
+\centering
+
+{\bfseries\fontsize{20}{24}\selectfont Teorema de Gauss--Ostrogradsky\\
+(Teorema de la Divergencia)\par}
+
+\vspace{0.4cm}
+{\color{azul}\rule{8cm}{2pt}\par}
+
+\vspace{1cm}
+
+{\large $\displaystyle \iiint_{V} \nabla \cdot \mathbf{F}\, dV \;=\; \oiint_{\partial V} \mathbf{F}\cdot\mathbf{n}\, dS$\par}
+
+\vspace{1.5cm}
+{\bfseries Reporte de Investigación\par}
+
+\vspace{2cm}
+
+\begin{tabular}{rl}
+\textbf{Nombre del alumno:} & Williams Espinosa López \\
+\textbf{Matrícula:} & 251185 \\
+\textbf{Cuatrimestre y grupo:} & 4\textordmasculine{} ``B'' \\
+\textbf{Docente:} & Sirgei García Ballinas \\
+\textbf{Asignatura:} & Cálculo Integral
+\end{tabular}
+
+\vfill
+\today
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introducción}
+
+El \textbf{Teorema de Gauss--Ostrogradsky}, también conocido como \textbf{Teorema de la Divergencia}, es uno de los resultados más importantes del cálculo vectorial. Relaciona una integral triple sobre un volumen con una integral de superficie sobre la frontera de ese volumen, y constituye una generalización tridimensional del Teorema Fundamental del Cálculo y del Teorema de Green en el plano.
+
+Históricamente fue formulado de manera independiente por el matemático alemán \textbf{Carl Friedrich Gauss} (1777--1855) y por el matemático ruso \textbf{Mijaíl Vasílievich Ostrogradsky} (1801--1862), este último publicando la demostración general en 1826.
+
+\begin{cajaconcepto}
+\textbf{Objetivo:} Estudiar el Teorema de Gauss--Ostrogradsky desde su formulación teórica y verificarlo analítica y numéricamente mediante tres ejemplos prácticos implementados en Python, comprobando la igualdad entre la integral de volumen de la divergencia y el flujo del campo a través de la superficie frontera.
+\end{cajaconcepto}
+
+El teorema tiene aplicaciones fundamentales en electromagnetismo (ley de Gauss), mecánica de fluidos (ecuación de continuidad), transferencia de calor, gravitación y ecuaciones diferenciales parciales.
+
+\section{Fundamentos Teóricos}
+
+\subsection{Conceptos previos}
+
+\begin{cajadefinicion}{Definición 1: Campo vectorial}
+Un \textbf{campo vectorial} en $\mathbb{R}^3$ es una función $\mathbf{F}:\mathbb{R}^3 \to \mathbb{R}^3$ que asigna a cada punto $(x,y,z)$ un vector:
+\[
+\mathbf{F}(x,y,z) = \big(P(x,y,z),\; Q(x,y,z),\; R(x,y,z)\big).
+\]
+\end{cajadefinicion}
+
+\begin{cajadefinicion}{Definición 2: Divergencia}
+La \textbf{divergencia} de un campo vectorial $\mathbf{F}=(P,Q,R)$ de clase $C^1$ es el campo escalar:
+\[
+\nabla \cdot \mathbf{F} \;=\;
+\frac{\partial P}{\partial x} +
+\frac{\partial Q}{\partial y} +
+\frac{\partial R}{\partial z}
+\]
+Mide la razón neta a la que el campo emana de un punto: si $\nabla\cdot\mathbf{F} > 0$ el punto actúa como \emph{fuente}, si $\nabla\cdot\mathbf{F} < 0$ actúa como \emph{sumidero}.
+\end{cajadefinicion}
+
+\begin{cajadefinicion}{Definición 3: Flujo de un campo vectorial}
+El \textbf{flujo} de un campo vectorial $\mathbf{F}$ a través de una superficie orientada $S$ con vector normal unitario $\mathbf{n}$ es:
+\[
+\Phi \;=\; \iint_{S} \mathbf{F}\cdot\mathbf{n}\, dS.
+\]
+Representa la cantidad neta del campo que atraviesa $S$ en la dirección de $\mathbf{n}$.
+\end{cajadefinicion}
+
+\subsection{Enunciado del teorema}
+
+\begin{cajateorema}
+Sea $V\subset \mathbb{R}^3$ un sólido acotado cuya frontera $\partial V = S$ es una superficie cerrada, regular a trozos, orientada hacia el exterior mediante el vector normal unitario $\mathbf{n}$. Sea $\mathbf{F}$ un campo vectorial de clase $C^1$ definido sobre un abierto que contiene a $V$. Entonces:
+\[
+\iiint_{V} (\nabla \cdot \mathbf{F}) \, dV \;=\;
+\oiint_{S} \mathbf{F}\cdot \mathbf{n}\, dS
+\]
+\end{cajateorema}
+
+\subsection{Interpretación física}
+
+El teorema afirma que \emph{la cantidad total de ``materia'' que un campo vectorial genera en el interior de un volumen es igual a la cantidad neta que atraviesa su frontera}. En mecánica de fluidos, si $\mathbf{F}$ es el campo de velocidades, la divergencia mide las fuentes/sumideros puntuales, mientras que el flujo mide cuánto fluido sale efectivamente por la superficie. El teorema garantiza que ambos totales deben coincidir.
+
+\subsection{Condiciones de aplicabilidad}
+
+Para aplicar correctamente el teorema se deben cumplir:
+\begin{enumerate}[leftmargin=1.5cm]
+    \item $V$ es un dominio sólido acotado y simplemente conexo.
+    \item La frontera $\partial V$ es cerrada y regular a trozos.
+    \item El vector normal $\mathbf{n}$ apunta hacia el exterior del volumen.
+    \item $\mathbf{F}$ tiene derivadas parciales continuas en un abierto que contiene $V\cup\partial V$.
+\end{enumerate}
+
+\subsection{Fórmulas en distintos sistemas de coordenadas}
+
+\textbf{Coordenadas cartesianas:} $dV = dx\, dy\, dz$
+\[
+\nabla\cdot\mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}.
+\]
+
+\textbf{Coordenadas cilíndricas:} $dV = r\, dr\, d\theta\, dz$
+\[
+\nabla\cdot\mathbf{F} = \frac{1}{r}\frac{\partial(r F_r)}{\partial r} + \frac{1}{r}\frac{\partial F_\theta}{\partial \theta} + \frac{\partial F_z}{\partial z}.
+\]
+
+\textbf{Coordenadas esféricas:} $dV = \rho^2 \sin\varphi\, d\rho\, d\varphi\, d\theta$
+\[
+\nabla\cdot\mathbf{F} = \frac{1}{\rho^2}\frac{\partial(\rho^2 F_\rho)}{\partial \rho} + \frac{1}{\rho\sin\varphi}\frac{\partial(\sin\varphi\, F_\varphi)}{\partial \varphi} + \frac{1}{\rho\sin\varphi}\frac{\partial F_\theta}{\partial \theta}.
+\]
+
+\section{Metodología}
+
+Para cada uno de los tres ejemplos se procedió de la siguiente manera:
+\begin{enumerate}[leftmargin=1.5cm]
+    \item Se definió el campo vectorial $\mathbf{F}$ y la región $V$.
+    \item Se calculó analíticamente $\nabla\cdot\mathbf{F}$ y se evaluó la integral triple $\iiint_V \nabla\cdot\mathbf{F}\, dV$.
+    \item Se calculó analíticamente el flujo $\oiint_{\partial V} \mathbf{F}\cdot\mathbf{n}\, dS$.
+    \item Se implementó en Python la verificación numérica de ambos lados usando \texttt{scipy.integrate}.
+    \item Se generaron gráficas 3D con \texttt{matplotlib} para visualizar el campo, la región y la comparación numérica.
+\end{enumerate}
+
+\section{Ejemplo 1: Campo radial sobre una esfera}
+
+\subsection{Planteamiento}
+Sea $\mathbf{F}(x,y,z)=(x,\,y,\,z)$ y $V$ la bola sólida $x^2+y^2+z^2\le R^2$ con $R=1$. Verificar el teorema de Gauss--Ostrogradsky.
+
+\subsection{Lado izquierdo: integral de la divergencia}
+
+\[
+\nabla\cdot\mathbf{F} = \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y} + \frac{\partial z}{\partial z} = 3.
+\]
+
+Por lo tanto:
+\[
+\iiint_V \nabla\cdot\mathbf{F}\, dV
+= 3 \iiint_V dV
+= 3 \cdot \frac{4}{3}\pi R^3 = 4\pi R^3.
+\]
+
+\subsection{Lado derecho: flujo a través de la esfera}
+
+En la esfera el vector normal unitario exterior es $\mathbf{n} = (x,y,z)/R$. Entonces:
+\[
+\mathbf{F}\cdot\mathbf{n} = \frac{x^2+y^2+z^2}{R} = \frac{R^2}{R} = R.
+\]
+
+Por lo tanto:
+\[
+\oiint_{\partial V} \mathbf{F}\cdot\mathbf{n}\, dS
+= R \cdot \text{Área}(\partial V)
+= R \cdot 4\pi R^2 = 4\pi R^3.
+\]
+
+\begin{cajaresultado}
+Ambos lados coinciden:
+\[
+\iiint_V \nabla\cdot\mathbf{F}\, dV = \oiint_{\partial V} \mathbf{F}\cdot\mathbf{n}\, dS = 4\pi R^3.
+\]
+Para $R=1$: $4\pi \approx 12.5664$. \hspace{0.5cm}$\checkmark$\; Teorema verificado.
+\end{cajaresultado}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{ejemplo1_esfera.png}
+    \caption{Izquierda: campo radial $\mathbf{F}=(x,y,z)$ sobre la esfera unitaria. Los vectores son perpendiculares a la superficie, apuntando hacia afuera. Derecha: comparación numérica de ambos lados del teorema.}
+\end{figure}
+
+\section{Ejemplo 2: Campo cuadrático sobre un cubo}
+
+\subsection{Planteamiento}
+Sea $\mathbf{F}(x,y,z) = (x^2,\,y^2,\,z^2)$ y $V$ el cubo unitario $[0,a]^3$ con $a=1$. Verificar el teorema.
+
+\subsection{Lado izquierdo: integral de la divergencia}
+
+\[
+\nabla\cdot\mathbf{F} = 2x + 2y + 2z.
+\]
+
+\begin{align*}
+\iiint_V (2x+2y+2z)\, dV
+&= 2\int_0^a\!\!\int_0^a\!\!\int_0^a x\, dx\,dy\,dz + \cdots\\
+&= 2\cdot \frac{a^2}{2}\cdot a^2 \;\cdot\; 3 \;=\; 3a^4.
+\end{align*}
+
+Para $a=1$: $3a^4 = 3$.
+
+\subsection{Lado derecho: flujo por las 6 caras del cubo}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Cara} & \textbf{Normal} $\mathbf{n}$ & $\mathbf{F}\cdot\mathbf{n}$ & \textbf{Flujo} \\
+\midrule
+$x=a$  & $(1,0,0)$  & $x^2 = a^2$   & $a^2 \cdot a^2 = a^4$ \\
+$x=0$  & $(-1,0,0)$ & $-x^2 = 0$    & $0$ \\
+$y=a$  & $(0,1,0)$  & $y^2 = a^2$   & $a^4$ \\
+$y=0$  & $(0,-1,0)$ & $-y^2 = 0$    & $0$ \\
+$z=a$  & $(0,0,1)$  & $z^2 = a^2$   & $a^4$ \\
+$z=0$  & $(0,0,-1)$ & $-z^2 = 0$    & $0$ \\
+\midrule
+\multicolumn{3}{r}{\textbf{Flujo total:}} & $3a^4$ \\
+\bottomrule
+\end{tabular}
+\caption{Flujo a través de cada cara del cubo.}
+\end{table}
+
+\begin{cajaresultado}
+Ambos lados dan $3a^4 = 3$ para $a=1$. \hspace{0.5cm}$\checkmark$\; Teorema verificado.
+\end{cajaresultado}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{ejemplo2_cubo.png}
+    \caption{Izquierda: cubo unitario con el campo $\mathbf{F}=(x^2,y^2,z^2)$. Derecha: flujo por cada cara; solo las caras en $+x$, $+y$, $+z$ contribuyen, y su suma iguala a la integral de la divergencia.}
+\end{figure}
+
+\section{Ejemplo 3: Campo sobre un cilindro}
+
+\subsection{Planteamiento}
+Sea $\mathbf{F}(x,y,z) = (xz,\,yz,\,z^2)$ y $V$ el cilindro $x^2+y^2 \le R^2$, $0\le z\le h$, con $R=1$, $h=2$.
+
+\subsection{Lado izquierdo: integral de la divergencia}
+
+\[
+\nabla\cdot\mathbf{F} = z + z + 2z = 4z.
+\]
+
+En coordenadas cilíndricas, con $dV = r\, dr\, d\theta\, dz$:
+\begin{align*}
+\iiint_V 4z\, dV
+&= \int_0^{2\pi}\!\!\int_0^R\!\!\int_0^h 4z \cdot r\, dz\, dr\, d\theta \\
+&= 2\pi \cdot \frac{R^2}{2} \cdot 2h^2
+\;=\; 2\pi R^2 h^2.
+\end{align*}
+
+Para $R=1$, $h=2$: $2\pi(1)(4) = 8\pi \approx 25.1327$.
+
+\subsection{Lado derecho: flujo por las tres superficies}
+
+\textbf{(a) Tapa superior} $z=h$, $\mathbf{n}=(0,0,1)$:
+\[
+\mathbf{F}\cdot\mathbf{n} = z^2 = h^2
+\;\;\Rightarrow\;\;
+\Phi_{\text{sup}} = h^2 \cdot \pi R^2.
+\]
+
+\textbf{(b) Tapa inferior} $z=0$, $\mathbf{n}=(0,0,-1)$:
+\[
+\mathbf{F}\cdot\mathbf{n} = -z^2 = 0
+\;\;\Rightarrow\;\;
+\Phi_{\text{inf}} = 0.
+\]
+
+\textbf{(c) Superficie lateral}, $\mathbf{n}=(x/R,\,y/R,\,0)$:
+\[
+\mathbf{F}\cdot\mathbf{n} = \frac{xz\cdot x + yz\cdot y}{R}
+= \frac{z(x^2+y^2)}{R} = \frac{z\,R^2}{R} = zR.
+\]
+Con $dS = R\, dz\, d\theta$:
+\[
+\Phi_{\text{lat}} = \int_0^{2\pi}\!\!\int_0^h zR \cdot R\, dz\, d\theta
+= 2\pi R^2 \cdot \frac{h^2}{2} = \pi R^2 h^2.
+\]
+
+\textbf{Flujo total:}
+\[
+\Phi = \pi R^2 h^2 + \pi R^2 h^2 + 0 = 2\pi R^2 h^2.
+\]
+
+\begin{cajaresultado}
+Ambos lados dan $2\pi R^2 h^2 = 8\pi \approx 25.1327$ para $R=1$, $h=2$. \hspace{0.5cm}$\checkmark$\; Teorema verificado.
+\end{cajaresultado}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{ejemplo3_cilindro.png}
+    \caption{Izquierda: cilindro con el campo $\mathbf{F}=(xz,yz,z^2)$. Derecha: contribuciones al flujo por la tapa inferior, superficie lateral y tapa superior, cuya suma iguala a la integral triple de la divergencia.}
+\end{figure}
+
+\section{Resumen comparativo}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Región} & \textbf{Campo $\mathbf{F}$} &
+$\iiint_V \nabla\cdot\mathbf{F}\, dV$ &
+$\oiint_{\partial V} \mathbf{F}\cdot\mathbf{n}\, dS$ \\
+\midrule
+Esfera ($R=1$)           & $(x,y,z)$       & $12.5664$ & $12.5664$ \\
+Cubo ($a=1$)             & $(x^2,y^2,z^2)$ & $3.0000$  & $3.0000$  \\
+Cilindro ($R=1, h=2$)    & $(xz,yz,z^2)$   & $25.1327$ & $25.1327$ \\
+\bottomrule
+\end{tabular}
+\caption{En los tres casos, la integral de volumen y el flujo de superficie coinciden numéricamente, confirmando el teorema.}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{resumen_comparativo.png}
+    \caption{Comparación global de los tres ejemplos. Cada par de barras (volumen vs superficie) tiene la misma altura, lo que verifica visualmente el Teorema de Gauss--Ostrogradsky.}
+\end{figure}
+
+\section{Conclusiones}
+
+\begin{cajaconcepto}
+El Teorema de Gauss--Ostrogradsky fue verificado analítica y numéricamente en tres geometrías distintas (esfera, cubo y cilindro), con tres campos vectoriales diferentes. En los tres casos la diferencia entre los dos lados del teorema fue prácticamente nula, del orden del error de máquina.
+\end{cajaconcepto}
+
+\begin{itemize}[leftmargin=1.5cm]
+    \item El teorema permite \emph{reducir} una integral de superficie (a menudo tediosa, sobre una frontera posiblemente compuesta por varias piezas) a una integral de volumen (normalmente más simple). En el ejemplo del cubo, por ejemplo, es más fácil integrar $2x+2y+2z$ sobre el cubo que evaluar el flujo por cada una de las seis caras.
+    \item Las condiciones de aplicabilidad (región cerrada, frontera regular, campo $C^1$, normal saliente) son esenciales: violar alguna de ellas puede conducir a resultados incorrectos.
+    \item La implementación numérica con \texttt{scipy.integrate} confirma que las cuadraturas adaptativas de Python son herramientas confiables para verificar teoremas del cálculo integral con precisión prácticamente exacta.
+    \item Este teorema es la base teórica de resultados físicos fundamentales como la \emph{ley de Gauss} del electromagnetismo y la \emph{ecuación de continuidad} en mecánica de fluidos.
+\end{itemize}
+
+
+\end{document}
